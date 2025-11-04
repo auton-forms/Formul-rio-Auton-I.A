@@ -1114,85 +1114,95 @@
             // Prepara os dados para envio
             const formData = new FormData();
             
-            // Adiciona apenas os campos essenciais
-            formData.append('clinicName', document.getElementById('clinicName').value);
-            formData.append('specialty', document.getElementById('specialty').value);
-            formData.append('cep', document.getElementById('cep').value);
-            formData.append('street', document.getElementById('street').value);
-            formData.append('number', document.getElementById('number').value);
-            formData.append('complement', document.getElementById('complement').value);
-            formData.append('neighborhood', document.getElementById('neighborhood').value);
-            formData.append('city', document.getElementById('city').value);
-            formData.append('state', document.getElementById('state').value);
-            formData.append('hasLunch', document.querySelector('input[name="hasLunch"]:checked').value);
-            formData.append('serviceType', document.querySelector('input[name="serviceType"]:checked').value);
-            formData.append('appointmentDuration', document.getElementById('appointmentDuration').value);
-            formData.append('hasParking', document.querySelector('input[name="hasParking"]:checked').value);
-            formData.append('agentName', document.getElementById('agentName').value);
+            // DADOS BÁSICOS
+            formData.append('🏥 Nome da Clínica', document.getElementById('clinicName').value);
+            formData.append('🎯 Especialidade Médica', document.getElementById('specialty').value);
             
-            // Horário de almoço (se aplicável)
-            if (document.querySelector('input[name="hasLunch"]:checked').value === 'Sim') {
-                formData.append('lunchStart', document.getElementById('lunchStart').value);
-                formData.append('lunchEnd', document.getElementById('lunchEnd').value);
-            }
+            // ENDEREÇO
+            formData.append('📍 CEP', document.getElementById('cep').value);
+            formData.append('📍 Rua', document.getElementById('street').value);
+            formData.append('📍 Número', document.getElementById('number').value);
+            formData.append('📍 Complemento', document.getElementById('complement').value || 'Não informado');
+            formData.append('📍 Bairro', document.getElementById('neighborhood').value);
+            formData.append('📍 Cidade', document.getElementById('city').value);
+            formData.append('📍 UF', document.getElementById('state').value);
             
-            // Convênios (se aplicável)
-            if (document.querySelector('input[name="serviceType"]:checked').value === 'Convênio' || 
-                document.querySelector('input[name="serviceType"]:checked').value === 'Ambos') {
-                formData.append('insuranceList', document.getElementById('insuranceList').value);
-            }
-            
-            // Informações dos pacientes
-            const patientInfoCheckboxes = document.querySelectorAll('input[name="patientInfo"]:checked');
-            const patientInfoValues = Array.from(patientInfoCheckboxes).map(cb => cb.value);
-            formData.append('patientInfo', patientInfoValues.join(', '));
-            
-            // Formas de pagamento
-            const paymentCheckboxes = document.querySelectorAll('input[name="paymentMethods"]:checked');
-            const paymentValues = Array.from(paymentCheckboxes).map(cb => cb.value);
-            formData.append('paymentMethods', paymentValues.join(', '));
-            
-            // Compacta os horários em um único campo
-            const horariosCompactados = [];
-            
+            // HORÁRIOS DE ATENDIMENTO
             const dias = [
-                { nome: 'Segunda', start: 'mondayStart', end: 'mondayEnd', active: 'monday' },
-                { nome: 'Terça', start: 'tuesdayStart', end: 'tuesdayEnd', active: 'tuesday' },
-                { nome: 'Quarta', start: 'wednesdayStart', end: 'wednesdayEnd', active: 'wednesday' },
-                { nome: 'Quinta', start: 'thursdayStart', end: 'thursdayEnd', active: 'thursday' },
-                { nome: 'Sexta', start: 'fridayStart', end: 'fridayEnd', active: 'friday' },
+                { nome: 'Segunda-feira', start: 'mondayStart', end: 'mondayEnd', active: 'monday' },
+                { nome: 'Terça-feira', start: 'tuesdayStart', end: 'tuesdayEnd', active: 'tuesday' },
+                { nome: 'Quarta-feira', start: 'wednesdayStart', end: 'wednesdayEnd', active: 'wednesday' },
+                { nome: 'Quinta-feira', start: 'thursdayStart', end: 'thursdayEnd', active: 'thursday' },
+                { nome: 'Sexta-feira', start: 'fridayStart', end: 'fridayEnd', active: 'friday' },
                 { nome: 'Sábado', start: 'saturdayStart', end: 'saturdayEnd', active: 'saturday' },
                 { nome: 'Domingo', start: 'sundayStart', end: 'sundayEnd', active: 'sunday' }
             ];
             
             dias.forEach(dia => {
-                if (document.getElementById(dia.active).checked) {
-                    const start = document.getElementById(dia.start).value;
-                    const end = document.getElementById(dia.end).value;
-                    horariosCompactados.push(`${dia.nome}: ${start} às ${end}`);
-                }
+                const isActive = document.getElementById(dia.active).checked;
+                const status = isActive ? '✅' : '❌';
+                const start = document.getElementById(dia.start).value;
+                const end = document.getElementById(dia.end).value;
+                const horario = isActive ? `${start} às ${end}` : 'Não atende';
+                
+                formData.append(`${status} ${dia.nome}`, horario);
             });
             
-            formData.append('horariosAtendimento', horariosCompactados.join(' | '));
+            // HORÁRIO DE ALMOÇO
+            const hasLunch = document.querySelector('input[name="hasLunch"]:checked').value;
+            formData.append('🍽️ Tem horário de almoço?', hasLunch);
             
-            // Compacta procedimentos
+            if (hasLunch === 'Sim') {
+                formData.append('🕛 Início do almoço', document.getElementById('lunchStart').value);
+                formData.append('🕐 Término do almoço', document.getElementById('lunchEnd').value);
+            }
+            
+            // TIPO DE ATENDIMENTO
+            const serviceType = document.querySelector('input[name="serviceType"]:checked').value;
+            formData.append('💼 Tipo de Atendimento', serviceType);
+            
+            if (serviceType === 'Convênio' || serviceType === 'Ambos') {
+                formData.append('🏥 Convênios Aceitos', document.getElementById('insuranceList').value);
+            }
+            
+            formData.append('⏱️ Duração das Consultas (minutos)', document.getElementById('appointmentDuration').value);
+            
+            // INFORMAÇÕES DOS PACIENTES
+            const patientInfoCheckboxes = document.querySelectorAll('input[name="patientInfo"]:checked');
+            const patientInfoValues = Array.from(patientInfoCheckboxes).map(cb => cb.value);
+            formData.append('📋 Informações Solicitadas aos Pacientes', patientInfoValues.join(', '));
+            
+            // PROCEDIMENTOS E PREÇOS
             const procedureNames = document.querySelectorAll('input[name="procedureName[]"]');
             const procedureDurations = document.querySelectorAll('input[name="procedureDuration[]"]');
             const procedurePrices = document.querySelectorAll('input[name="procedurePrice[]"]');
             
-            const procedimentosCompactados = [];
+            let hasProcedures = false;
             for (let i = 0; i < procedureNames.length; i++) {
                 if (procedureNames[i].value.trim()) {
+                    hasProcedures = true;
                     const nome = procedureNames[i].value;
                     const duracao = procedureDurations[i].value || 'N/D';
-                    const preco = procedurePrices[i].value ? `R$ ${procedurePrices[i].value}` : 'Sem preço';
-                    procedimentosCompactados.push(`${nome} (${duracao}min - ${preco})`);
+                    const preco = procedurePrices[i].value ? `R$ ${procedurePrices[i].value}` : 'Sem preço definido';
+                    
+                    formData.append(`📝 Procedimento ${i + 1}`, `${nome} | ${duracao}min | ${preco}`);
                 }
             }
             
-            if (procedimentosCompactados.length > 0) {
-                formData.append('procedimentos', procedimentosCompactados.join(' | '));
+            if (!hasProcedures) {
+                formData.append('📝 Procedimentos', 'Nenhum procedimento cadastrado');
             }
+            
+            // FORMAS DE PAGAMENTO
+            const paymentCheckboxes = document.querySelectorAll('input[name="paymentMethods"]:checked');
+            const paymentValues = Array.from(paymentCheckboxes).map(cb => cb.value);
+            formData.append('💳 Formas de Pagamento Aceitas', paymentValues.join(', '));
+            
+            // ESTACIONAMENTO
+            formData.append('🚗 Estacionamento', document.querySelector('input[name="hasParking"]:checked').value);
+            
+            // NOME DO AGENTE
+            formData.append('🤖 Nome do Agente', document.getElementById('agentName').value);
             
             // Configurações do FormSubmit
             formData.append('_captcha', 'false');
