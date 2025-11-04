@@ -79,15 +79,16 @@
         
         .form-card {
             background: var(--light);
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border);
-            padding: 40px;
+            padding: 50px;
             margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .form-section {
-            margin-bottom: 40px;
-            padding-bottom: 30px;
+            margin-bottom: 50px;
+            padding-bottom: 40px;
             border-bottom: 1px solid var(--gray-light);
         }
         
@@ -101,7 +102,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         .section-icon {
@@ -126,7 +127,7 @@
         .form-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+            gap: 25px;
         }
         
         .full-width {
@@ -134,12 +135,12 @@
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
         
         label {
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 500;
             color: var(--dark);
             font-size: 1.1rem;
@@ -164,6 +165,7 @@
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         input::placeholder, textarea::placeholder {
@@ -173,8 +175,8 @@
         .checkbox-group, .radio-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            margin-top: 10px;
+            gap: 18px;
+            margin-top: 12px;
         }
         
         .checkbox-item, .radio-item {
@@ -195,15 +197,15 @@
         
         /* Horários - Layout conforme imagem */
         .hours-section {
-            margin-top: 20px;
+            margin-top: 25px;
         }
         
         .hours-header {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 80px;
-            gap: 15px;
-            margin-bottom: 10px;
-            padding: 0 10px;
+            gap: 20px;
+            margin-bottom: 15px;
+            padding: 0 15px;
             font-weight: 600;
             color: var(--dark);
             font-size: 1.1rem;
@@ -212,12 +214,12 @@
         .hours-row {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 80px;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 20px;
             align-items: center;
-            padding: 15px;
+            padding: 20px;
             background: var(--gray-lighter);
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid var(--border);
         }
         
@@ -295,7 +297,7 @@
         .info-text {
             color: var(--gray);
             font-size: 1rem;
-            margin-top: 5px;
+            margin-top: 8px;
         }
         
         /* Estilo para campos fixos */
@@ -372,32 +374,40 @@
         
         .btn-primary:hover {
             background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+        }
+        
+        .btn-secondary {
+            background: var(--gray-lighter);
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gray-light);
+        }
+        
+        .btn-danger {
+            background: var(--gray-lighter);
+            color: var(--error);
+            border: 1px solid var(--error);
+            padding: 12px 16px;
+        }
+        
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.1);
         }
         
         .btn-full {
             width: 100%;
             padding: 18px;
             font-size: 1.2rem;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         
         .hidden {
             display: none;
-        }
-        
-        .success-message {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--success);
-            color: var(--success);
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            font-size: 1.1rem;
         }
         
         .loading-text {
@@ -411,13 +421,51 @@
         .thank-you-page {
             display: none;
             text-align: center;
-            padding: 40px;
+            padding: 60px 40px;
+            background: var(--light);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         .thank-you-icon {
-            font-size: 4rem;
+            font-size: 5rem;
             color: var(--success);
+            margin-bottom: 30px;
+        }
+        
+        .thank-you-page h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--dark);
             margin-bottom: 20px;
+        }
+        
+        .thank-you-page p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .procedure-item {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr auto;
+            gap: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: var(--gray-lighter);
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            align-items: end;
+        }
+        
+        .lunch-time-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 15px;
         }
         
         @media (max-width: 768px) {
@@ -429,8 +477,16 @@
                 grid-template-columns: 1fr;
             }
             
+            .procedure-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .lunch-time-grid {
+                grid-template-columns: 1fr;
+            }
+            
             .form-card {
-                padding: 25px;
+                padding: 30px;
             }
             
             h1 {
@@ -694,13 +750,13 @@
                         </div>
                         
                         <div id="lunchTime" class="hidden">
-                            <div class="form-grid">
+                            <div class="lunch-time-grid">
                                 <div class="form-group">
                                     <label for="lunchStart">Início do almoço</label>
                                     <input type="time" id="lunchStart" name="lunchStart" value="12:00">
                                 </div>
                                 <div class="form-group">
-                                    <label for="lunchEnd">Fim do almoço</label>
+                                    <label for="lunchEnd">Término do almoço</label>
                                     <input type="time" id="lunchEnd" name="lunchEnd" value="13:00">
                                 </div>
                             </div>
@@ -722,15 +778,15 @@
                             <label class="required">Você atende por convênio, particular ou ambos?</label>
                             <div class="radio-group">
                                 <div class="radio-item">
-                                    <input type="radio" id="insuranceOnly" name="serviceType" value="Convênio">
+                                    <input type="radio" id="insuranceOnly" name="serviceType" value="convênio">
                                     <label for="insuranceOnly">Convênio</label>
                                 </div>
                                 <div class="radio-item">
-                                    <input type="radio" id="privateOnly" name="serviceType" value="Particular">
+                                    <input type="radio" id="privateOnly" name="serviceType" value="particular">
                                     <label for="privateOnly">Particular</label>
                                 </div>
                                 <div class="radio-item">
-                                    <input type="radio" id="both" name="serviceType" value="Ambos">
+                                    <input type="radio" id="both" name="serviceType" value="ambos">
                                     <label for="both">Ambos</label>
                                 </div>
                             </div>
@@ -818,6 +874,10 @@
                                 <div>
                                     <label for="procedureDuration1">Duração (min)</label>
                                     <input type="number" id="procedureDuration1" name="procedureDuration[]" placeholder="Ex: 45" min="15" max="180">
+                                </div>
+                                <div>
+                                    <label for="procedurePrice1">Preço (R$)</label>
+                                    <input type="number" id="procedurePrice1" name="procedurePrice[]" placeholder="Ex: 150.00" min="0" step="0.01">
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-danger remove-procedure">
@@ -932,11 +992,10 @@
             <div class="thank-you-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h2>Cadastro Enviado com Sucesso!</h2>
-            <p>Seu formulário foi enviado com sucesso. Em breve entraremos em contato.</p>
-            <button class="btn btn-primary" onclick="window.location.reload()">
-                <i class="fas fa-redo"></i> Preencher Novo Formulário
-            </button>
+            <h2>Cadastro Realizado com Sucesso!</h2>
+            <p>Seu formulário foi enviado com sucesso para nossa equipe. Em breve entraremos em contato para finalizar a configuração do seu agente Auton I.A.</p>
+            <p>Nossa equipe analisará todas as informações fornecidas e em até 48 horas úteis retornaremos com os próximos passos para ativar seu assistente inteligente.</p>
+            <p>Obrigado por escolher a Auton I.A para automatizar o atendimento da sua clínica!</p>
         </div>
     </div>
 
@@ -976,7 +1035,7 @@
         // Mostrar/ocultar informações de convênio
         document.querySelectorAll('input[name="serviceType"]').forEach(radio => {
             radio.addEventListener('change', function() {
-                const showInsuranceInfo = this.value === 'Convênio' || this.value === 'Ambos';
+                const showInsuranceInfo = this.value === 'convênio' || this.value === 'ambos';
                 document.getElementById('insuranceInfo').classList.toggle('hidden', !showInsuranceInfo);
             });
         });
@@ -995,6 +1054,10 @@
                 <div>
                     <label for="procedureDuration${procedureCount}">Duração (min)</label>
                     <input type="number" id="procedureDuration${procedureCount}" name="procedureDuration[]" placeholder="Ex: 45" min="15" max="180">
+                </div>
+                <div>
+                    <label for="procedurePrice${procedureCount}">Preço (R$)</label>
+                    <input type="number" id="procedurePrice${procedureCount}" name="procedurePrice[]" placeholder="Ex: 150.00" min="0" step="0.01">
                 </div>
                 <div>
                     <button type="button" class="btn btn-danger remove-procedure">
