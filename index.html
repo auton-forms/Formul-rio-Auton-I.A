@@ -57,7 +57,10 @@
         .logo-icon {
             font-size: 2.5rem;
             color: var(--dark);
+            background: var(--gray-lighter);
             padding: 15px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
         }
         
         h1 {
@@ -104,11 +107,14 @@
         .section-icon {
             font-size: 1.5rem;
             color: var(--dark);
+            background: var(--gray-lighter);
             width: 50px;
             height: 50px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            border: 1px solid var(--border);
         }
         
         .section-title {
@@ -194,7 +200,7 @@
         
         .hours-header {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 120px;
             gap: 15px;
             margin-bottom: 10px;
             padding: 0 10px;
@@ -205,7 +211,7 @@
         
         .hours-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 120px;
             gap: 15px;
             margin-bottom: 15px;
             align-items: center;
@@ -223,9 +229,56 @@
             font-size: 1.1rem;
         }
         
-        .day-label input {
-            width: 20px;
-            height: 20px;
+        .toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        /* Estilo do toggle switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+        
+        input:checked + .toggle-slider:before {
+            transform: translateX(30px);
         }
         
         .time-input-group {
@@ -239,16 +292,63 @@
             color: var(--gray);
         }
         
-        .procedure-item {
-            display: grid;
-            grid-template-columns: 2fr 1fr auto;
-            gap: 15px;
-            margin-bottom: 15px;
-            padding: 15px;
-            background: var(--gray-lighter);
-            border-radius: 8px;
-            border: 1px solid var(--border);
-            align-items: end;
+        .info-text {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        
+        /* Estilo para campos fixos */
+        .fixed-checkbox {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .fixed-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -150px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+            font-weight: normal;
+        }
+        
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark) transparent transparent transparent;
+        }
+        
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
         }
         
         .btn {
@@ -272,27 +372,6 @@
         
         .btn-primary:hover {
             background: var(--primary-dark);
-        }
-        
-        .btn-secondary {
-            background: var(--gray-lighter);
-            color: var(--dark);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--gray-light);
-        }
-        
-        .btn-danger {
-            background: var(--gray-lighter);
-            color: var(--error);
-            border: 1px solid var(--error);
-            padding: 12px 16px;
-        }
-        
-        .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.1);
         }
         
         .btn-full {
@@ -321,22 +400,12 @@
             font-size: 1.1rem;
         }
         
-        .info-text {
-            color: var(--gray);
-            font-size: 1rem;
-            margin-top: 5px;
-        }
-        
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
             }
             
             .hours-header, .hours-row {
-                grid-template-columns: 1fr;
-            }
-            
-            .procedure-item {
                 grid-template-columns: 1fr;
             }
             
@@ -453,7 +522,7 @@
                                 <div>Dia</div>
                                 <div>Horário de início *</div>
                                 <div>Horário de término</div>
-                                <div>Ativo</div>
+                                <div style="text-align: right;">Ativo</div>
                             </div>
                             
                             <!-- Segunda-feira -->
@@ -467,8 +536,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="mondayEnd" name="mondayEnd" value="18:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="monday" name="days" value="monday" checked>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="monday" name="days" value="monday" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -483,8 +555,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="tuesdayEnd" name="tuesdayEnd" value="18:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="tuesday" name="days" value="tuesday" checked>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="tuesday" name="days" value="tuesday" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -499,8 +574,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="wednesdayEnd" name="wednesdayEnd" value="18:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="wednesday" name="days" value="wednesday" checked>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="wednesday" name="days" value="wednesday" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -515,8 +593,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="thursdayEnd" name="thursdayEnd" value="18:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="thursday" name="days" value="thursday" checked>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="thursday" name="days" value="thursday" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -531,8 +612,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="fridayEnd" name="fridayEnd" value="18:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="friday" name="days" value="friday" checked>
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="friday" name="days" value="friday" checked>
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -547,8 +631,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="saturdayEnd" name="saturdayEnd" value="12:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="saturday" name="days" value="saturday">
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="saturday" name="days" value="saturday">
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                             
@@ -563,8 +650,11 @@
                                 <div class="time-input-group">
                                     <input type="time" id="sundayEnd" name="sundayEnd" value="12:00">
                                 </div>
-                                <div class="day-label">
-                                    <input type="checkbox" id="sunday" name="days" value="sunday">
+                                <div class="toggle-container">
+                                    <label class="toggle-switch">
+                                        <input type="checkbox" id="sunday" name="days" value="sunday">
+                                        <span class="toggle-slider"></span>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -652,12 +742,24 @@
                         <label class="required">Quais informações você precisa dos pacientes para agendar uma consulta?</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientName" name="patientInfo" value="name" checked>
-                                <label for="patientName">Nome completo</label>
+                                <input type="checkbox" id="patientName" name="patientInfo" value="name" checked class="fixed-checkbox">
+                                <label for="patientName" class="fixed-checkbox-label">
+                                    Nome completo
+                                    <div class="tooltip">
+                                        <i class="fas fa-question-circle"></i>
+                                        <span class="tooltiptext">Este campo é sempre solicitado aos pacientes por padrão e não pode ser removido</span>
+                                    </div>
+                                </label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientPhone" name="patientInfo" value="phone" checked>
-                                <label for="patientPhone">Telefone</label>
+                                <input type="checkbox" id="patientPhone" name="patientInfo" value="phone" checked class="fixed-checkbox">
+                                <label for="patientPhone" class="fixed-checkbox-label">
+                                    Telefone
+                                    <div class="tooltip">
+                                        <i class="fas fa-question-circle"></i>
+                                        <span class="tooltiptext">O número de telefone é identificado automaticamente pelo sistema via WhatsApp</span>
+                                    </div>
+                                </label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="patientCPF" name="patientInfo" value="cpf">
@@ -840,7 +942,6 @@
                 
                 // Mostrar mensagem de sucesso
                 document.getElementById('successMessage').classList.remove('hidden');
-                this.reset();
                 
                 // Rolar para o topo
                 window.scrollTo(0, 0);
