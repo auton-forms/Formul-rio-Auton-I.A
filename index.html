@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Agente - Auton I.A</title>
+    <title>Agent Form - Auton I.A</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -200,7 +200,7 @@
         
         .hours-header {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 120px;
+            grid-template-columns: 2fr 1fr 1fr 80px;
             gap: 15px;
             margin-bottom: 10px;
             padding: 0 10px;
@@ -211,7 +211,7 @@
         
         .hours-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 120px;
+            grid-template-columns: 2fr 1fr 1fr 80px;
             gap: 15px;
             margin-bottom: 15px;
             align-items: center;
@@ -235,12 +235,12 @@
             align-items: center;
         }
         
-        /* Estilo do toggle switch */
+        /* Estilo do toggle switch - Menor */
         .toggle-switch {
             position: relative;
             display: inline-block;
-            width: 60px;
-            height: 30px;
+            width: 50px;
+            height: 24px;
         }
         
         .toggle-switch input {
@@ -258,16 +258,16 @@
             bottom: 0;
             background-color: #ccc;
             transition: .4s;
-            border-radius: 34px;
+            border-radius: 24px;
         }
         
         .toggle-slider:before {
             position: absolute;
             content: "";
-            height: 22px;
-            width: 22px;
-            left: 4px;
-            bottom: 4px;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
             background-color: white;
             transition: .4s;
             border-radius: 50%;
@@ -278,7 +278,7 @@
         }
         
         input:checked + .toggle-slider:before {
-            transform: translateX(30px);
+            transform: translateX(26px);
         }
         
         .time-input-group {
@@ -427,108 +427,108 @@
                     <i class="fas fa-robot"></i>
                 </div>
                 <div>
-                    <h1>Formulário de Agente - Auton I.A</h1>
-                    <p class="subtitle">Configure seu agente de atendimento inteligente para sua clínica médica</p>
+                    <h1>Agent Form - Auton I.A</h1>
+                    <p class="subtitle">Configure your intelligent service agent for your medical clinic</p>
                 </div>
             </div>
         </header>
         
-        <form id="clinicForm" action="https://formsubmit.co/autonia.contato@gmail.com" method="POST">
+        <form id="clinicForm">
             <div class="form-card">
-                <!-- Dados Básicos -->
+                <!-- Basic Information -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-stethoscope"></i>
                         </div>
-                        <h2 class="section-title">Dados Básicos</h2>
+                        <h2 class="section-title">Basic Information</h2>
                     </div>
                     
                     <div class="form-grid">
                         <div class="form-group full-width">
-                            <label for="clinicName" class="required">Nome da Clínica ou Consultório</label>
-                            <input type="text" id="clinicName" name="clinicName" placeholder="Digite o nome da sua clínica ou consultório médico" required>
+                            <label for="clinicName" class="required">Clinic or Practice Name</label>
+                            <input type="text" id="clinicName" name="clinicName" placeholder="Enter your clinic or medical practice name" required>
                         </div>
                         
                         <div class="form-group full-width">
-                            <label for="specialty" class="required">Especialidade</label>
-                            <input type="text" id="specialty" name="specialty" placeholder="Qual é a sua especialidade médica?" required>
+                            <label for="specialty" class="required">Medical Specialty</label>
+                            <input type="text" id="specialty" name="specialty" placeholder="What is your medical specialty?" required>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Endereço -->
+                <!-- Address -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <h2 class="section-title">Endereço</h2>
+                        <h2 class="section-title">Address</h2>
                     </div>
                     
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="cep" class="required">CEP</label>
+                            <label for="cep" class="required">ZIP Code</label>
                             <input type="text" id="cep" name="cep" placeholder="Ex: 01234567" maxlength="8" pattern="[0-9]{8}" required>
-                            <p class="info-text">Digite o CEP com 8 números para buscar o endereço automaticamente</p>
+                            <p class="info-text">Enter 8-digit ZIP code to automatically fetch address</p>
                         </div>
                         
                         <div class="form-group full-width">
-                            <label for="street" class="required">Rua</label>
+                            <label for="street" class="required">Street</label>
                             <input type="text" id="street" name="street" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="number" class="required">Número</label>
+                            <label for="number" class="required">Number</label>
                             <input type="text" id="number" name="number" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="complement">Complemento</label>
+                            <label for="complement">Complement</label>
                             <input type="text" id="complement" name="complement">
                         </div>
                         
                         <div class="form-group">
-                            <label for="neighborhood" class="required">Bairro</label>
+                            <label for="neighborhood" class="required">Neighborhood</label>
                             <input type="text" id="neighborhood" name="neighborhood" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="city" class="required">Cidade</label>
+                            <label for="city" class="required">City</label>
                             <input type="text" id="city" name="city" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="state" class="required">UF</label>
+                            <label for="state" class="required">State</label>
                             <input type="text" id="state" name="state" maxlength="2" required>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Horários de Atendimento -->
+                <!-- Service Hours -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-clock"></i>
                         </div>
-                        <h2 class="section-title">Horários de Atendimento</h2>
+                        <h2 class="section-title">Service Hours</h2>
                     </div>
                     
                     <div class="form-group">
-                        <p>Selecione os dias e horários em que você atende</p>
+                        <p>Select the days and times you provide service</p>
                         
                         <div class="hours-section">
                             <div class="hours-header">
-                                <div>Dia</div>
-                                <div>Horário de início *</div>
-                                <div>Horário de término</div>
-                                <div style="text-align: right;">Ativo</div>
+                                <div>Day</div>
+                                <div>Start Time *</div>
+                                <div>End Time</div>
+                                <div style="text-align: right;">Active</div>
                             </div>
                             
-                            <!-- Segunda-feira -->
+                            <!-- Monday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="monday">Segunda-feira</label>
+                                    <label for="monday">Monday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="mondayStart" name="mondayStart" value="08:00">
@@ -544,10 +544,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Terça-feira -->
+                            <!-- Tuesday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="tuesday">Terça-feira</label>
+                                    <label for="tuesday">Tuesday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="tuesdayStart" name="tuesdayStart" value="08:00">
@@ -563,10 +563,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Quarta-feira -->
+                            <!-- Wednesday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="wednesday">Quarta-feira</label>
+                                    <label for="wednesday">Wednesday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="wednesdayStart" name="wednesdayStart" value="08:00">
@@ -582,10 +582,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Quinta-feira -->
+                            <!-- Thursday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="thursday">Quinta-feira</label>
+                                    <label for="thursday">Thursday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="thursdayStart" name="thursdayStart" value="08:00">
@@ -601,10 +601,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Sexta-feira -->
+                            <!-- Friday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="friday">Sexta-feira</label>
+                                    <label for="friday">Friday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="fridayStart" name="fridayStart" value="08:00">
@@ -620,10 +620,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Sábado -->
+                            <!-- Saturday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="saturday">Sábado</label>
+                                    <label for="saturday">Saturday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="saturdayStart" name="saturdayStart" value="08:00">
@@ -639,10 +639,10 @@
                                 </div>
                             </div>
                             
-                            <!-- Domingo -->
+                            <!-- Sunday -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <label for="sunday">Domingo</label>
+                                    <label for="sunday">Sunday</label>
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="sundayStart" name="sundayStart" value="08:00">
@@ -661,26 +661,26 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Tem horário de almoço?</label>
+                        <label>Do you have a lunch break?</label>
                         <div class="radio-group">
                             <div class="radio-item">
                                 <input type="radio" id="lunchYes" name="hasLunch" value="yes">
-                                <label for="lunchYes">Sim</label>
+                                <label for="lunchYes">Yes</label>
                             </div>
                             <div class="radio-item">
                                 <input type="radio" id="lunchNo" name="hasLunch" value="no" checked>
-                                <label for="lunchNo">Não</label>
+                                <label for="lunchNo">No</label>
                             </div>
                         </div>
                         
                         <div id="lunchTime" class="hidden">
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label for="lunchStart">Início do almoço</label>
+                                    <label for="lunchStart">Lunch Start</label>
                                     <input type="time" id="lunchStart" name="lunchStart" value="12:00">
                                 </div>
                                 <div class="form-group">
-                                    <label for="lunchEnd">Fim do almoço</label>
+                                    <label for="lunchEnd">Lunch End</label>
                                     <input type="time" id="lunchEnd" name="lunchEnd" value="13:00">
                                 </div>
                             </div>
@@ -688,76 +688,76 @@
                     </div>
                 </div>
                 
-                <!-- Tipo de Atendimento -->
+                <!-- Service Type -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-user-md"></i>
                         </div>
-                        <h2 class="section-title">Tipo de Atendimento</h2>
+                        <h2 class="section-title">Service Type</h2>
                     </div>
                     
                     <div class="form-grid">
                         <div class="form-group full-width">
-                            <label class="required">Você atende por convênio, particular ou ambos?</label>
+                            <label class="required">Do you accept insurance, private payment, or both?</label>
                             <div class="radio-group">
                                 <div class="radio-item">
                                     <input type="radio" id="insuranceOnly" name="serviceType" value="insurance">
-                                    <label for="insuranceOnly">Convênio</label>
+                                    <label for="insuranceOnly">Insurance</label>
                                 </div>
                                 <div class="radio-item">
                                     <input type="radio" id="privateOnly" name="serviceType" value="private">
-                                    <label for="privateOnly">Particular</label>
+                                    <label for="privateOnly">Private</label>
                                 </div>
                                 <div class="radio-item">
                                     <input type="radio" id="both" name="serviceType" value="both">
-                                    <label for="both">Ambos</label>
+                                    <label for="both">Both</label>
                                 </div>
                             </div>
                             
                             <div id="insuranceInfo" class="hidden">
-                                <label for="insuranceList">Quais convênios você aceita?</label>
-                                <textarea id="insuranceList" name="insuranceList" placeholder="Liste os convênios aceitos separados por vírgula"></textarea>
+                                <label for="insuranceList">Which insurance plans do you accept?</label>
+                                <textarea id="insuranceList" name="insuranceList" placeholder="List accepted insurance plans separated by commas"></textarea>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="appointmentDuration" class="required">Duração das consultas (min)</label>
+                            <label for="appointmentDuration" class="required">Appointment Duration (minutes)</label>
                             <input type="number" id="appointmentDuration" name="appointmentDuration" placeholder="Ex: 30" min="15" max="120" required>
-                            <p class="info-text">Digite apenas o número de minutos</p>
+                            <p class="info-text">Enter only the number of minutes</p>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Informações dos Pacientes -->
+                <!-- Patient Information -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-user-injured"></i>
                         </div>
-                        <h2 class="section-title">Informações dos Pacientes</h2>
+                        <h2 class="section-title">Patient Information</h2>
                     </div>
                     
                     <div class="form-group">
-                        <label class="required">Quais informações você precisa dos pacientes para agendar uma consulta?</label>
+                        <label class="required">What information do you need from patients to schedule an appointment?</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="patientName" name="patientInfo" value="name" checked class="fixed-checkbox">
                                 <label for="patientName" class="fixed-checkbox-label">
-                                    Nome completo
+                                    Full Name
                                     <div class="tooltip">
                                         <i class="fas fa-question-circle"></i>
-                                        <span class="tooltiptext">Este campo é sempre solicitado aos pacientes por padrão e não pode ser removido</span>
+                                        <span class="tooltiptext">This field is always requested from patients by default and cannot be removed</span>
                                     </div>
                                 </label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="patientPhone" name="patientInfo" value="phone" checked class="fixed-checkbox">
                                 <label for="patientPhone" class="fixed-checkbox-label">
-                                    Telefone
+                                    Phone
                                     <div class="tooltip">
                                         <i class="fas fa-question-circle"></i>
-                                        <span class="tooltiptext">O número de telefone é identificado automaticamente pelo sistema via WhatsApp</span>
+                                        <span class="tooltiptext">Phone number is automatically identified by the system via WhatsApp</span>
                                     </div>
                                 </label>
                             </div>
@@ -767,27 +767,27 @@
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="patientBirth" name="patientInfo" value="birth">
-                                <label for="patientBirth">Data de nascimento</label>
+                                <label for="patientBirth">Date of Birth</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="patientReason" name="patientInfo" value="reason">
-                                <label for="patientReason">Motivo da consulta</label>
+                                <label for="patientReason">Reason for Visit</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Formas de Pagamento -->
+                <!-- Payment Methods -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-credit-card"></i>
                         </div>
-                        <h2 class="section-title">Formas de Pagamento</h2>
+                        <h2 class="section-title">Payment Methods</h2>
                     </div>
                     
                     <div class="form-group">
-                        <label class="required">Selecione todas as formas de pagamento que sua clínica aceita</label>
+                        <label class="required">Select all payment methods accepted by your clinic</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentPix" name="paymentMethods" value="pix">
@@ -795,86 +795,81 @@
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentCash" name="paymentMethods" value="cash">
-                                <label for="paymentCash">Dinheiro</label>
+                                <label for="paymentCash">Cash</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentDebit" name="paymentMethods" value="debit">
-                                <label for="paymentDebit">Cartão de Débito</label>
+                                <label for="paymentDebit">Debit Card</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentCredit" name="paymentMethods" value="credit">
-                                <label for="paymentCredit">Cartão de Crédito</label>
+                                <label for="paymentCredit">Credit Card</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentBank" name="paymentMethods" value="bank">
-                                <label for="paymentBank">Transferência Bancária</label>
+                                <label for="paymentBank">Bank Transfer</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentBoleto" name="paymentMethods" value="boleto">
-                                <label for="paymentBoleto">Boleto Bancário</label>
+                                <label for="paymentBoleto">Bank Slip</label>
                             </div>
                             <div class="checkbox-item">
                                 <input type="checkbox" id="paymentConv" name="paymentMethods" value="conv">
-                                <label for="paymentConv">Convênio</label>
+                                <label for="paymentConv">Insurance</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Estacionamento -->
+                <!-- Parking -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-parking"></i>
                         </div>
-                        <h2 class="section-title">Estacionamento</h2>
+                        <h2 class="section-title">Parking</h2>
                     </div>
                     
                     <div class="form-group">
-                        <label class="required">A clínica tem estacionamento?</label>
+                        <label class="required">Does the clinic have parking?</label>
                         <div class="radio-group">
                             <div class="radio-item">
                                 <input type="radio" id="parkingYes" name="hasParking" value="yes">
-                                <label for="parkingYes">Sim, possui estacionamento</label>
+                                <label for="parkingYes">Yes, we have parking</label>
                             </div>
                             <div class="radio-item">
                                 <input type="radio" id="parkingNo" name="hasParking" value="no" checked>
-                                <label for="parkingNo">Não possui estacionamento</label>
+                                <label for="parkingNo">No parking available</label>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Nome do Agente -->
+                <!-- Agent Name -->
                 <div class="form-section">
                     <div class="section-header">
                         <div class="section-icon">
                             <i class="fas fa-robot"></i>
                         </div>
-                        <h2 class="section-title">Nome do Agente</h2>
+                        <h2 class="section-title">Agent Name</h2>
                     </div>
                     
                     <div class="form-group">
-                        <label for="agentName" class="required">Como você gostaria que seu agente se chamasse?</label>
-                        <input type="text" id="agentName" name="agentName" placeholder="Nome do agente" required>
+                        <label for="agentName" class="required">What would you like your agent to be called?</label>
+                        <input type="text" id="agentName" name="agentName" placeholder="Agent name" required>
                     </div>
                 </div>
                 
-                <!-- Botão de Envio -->
+                <!-- Submit Button -->
                 <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fas fa-paper-plane"></i> Enviar Cadastro
+                    <i class="fas fa-paper-plane"></i> Submit Registration
                 </button>
-                
-                <!-- Configurações do FormSubmit -->
-                <input type="hidden" name="_subject" value="Novo Cadastro de Agente - Auton I.A">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
             </div>
         </form>
         
         <div id="successMessage" class="success-message hidden">
             <i class="fas fa-check-circle"></i>
-            <span>Cadastro enviado com sucesso! Em breve entraremos em contato.</span>
+            <span>Registration submitted successfully! We will contact you shortly.</span>
         </div>
     </div>
 
@@ -894,12 +889,12 @@
                             document.getElementById('state').value = data.uf;
                             document.getElementById('number').focus();
                         } else {
-                            alert('CEP não encontrado. Por favor, verifique e tente novamente.');
+                            alert('ZIP code not found. Please check and try again.');
                         }
                     })
                     .catch(error => {
-                        console.error('Erro ao buscar CEP:', error);
-                        alert('Erro ao buscar CEP. Por favor, preencha manualmente.');
+                        console.error('Error fetching ZIP code:', error);
+                        alert('Error fetching ZIP code. Please fill in manually.');
                     });
             }
         });
@@ -937,16 +932,19 @@
             });
             
             if (isValid) {
-                // Enviar formulário via FormSubmit
-                this.submit();
-                
-                // Mostrar mensagem de sucesso
-                document.getElementById('successMessage').classList.remove('hidden');
-                
-                // Rolar para o topo
-                window.scrollTo(0, 0);
+                // Simular envio do formulário
+                setTimeout(() => {
+                    // Mostrar mensagem de sucesso
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    
+                    // Rolar para o topo
+                    window.scrollTo(0, 0);
+                    
+                    // Limpar formulário
+                    this.reset();
+                }, 1000);
             } else {
-                alert('Por favor, preencha todos os campos obrigatórios.');
+                alert('Please fill in all required fields.');
             }
         });
     </script>
