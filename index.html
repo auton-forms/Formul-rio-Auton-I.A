@@ -9,14 +9,13 @@
         :root {
             --primary: #2563eb;
             --primary-dark: #1d4ed8;
-            --secondary: #7e22ce;
             --accent: #06d6a0;
-            --dark: #1e293b;
+            --dark: #000000;
             --light: #ffffff;
-            --gray: #64748b;
-            --gray-light: #e2e8f0;
-            --gray-lighter: #f8fafc;
-            --border: #cbd5e1;
+            --gray: #666666;
+            --gray-light: #e5e5e5;
+            --gray-lighter: #f5f5f5;
+            --border: #cccccc;
             --error: #ef4444;
             --success: #10b981;
         }
@@ -57,19 +56,14 @@
         
         .logo-icon {
             font-size: 2.5rem;
-            color: var(--accent);
-            background: rgba(6, 214, 160, 0.1);
+            color: var(--dark);
             padding: 15px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
         }
         
         h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--dark);
             margin-bottom: 10px;
         }
         
@@ -82,9 +76,8 @@
         
         .form-card {
             background: var(--light);
-            border-radius: 16px;
+            border-radius: 8px;
             border: 1px solid var(--border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             padding: 40px;
             margin-bottom: 30px;
         }
@@ -110,15 +103,12 @@
         
         .section-icon {
             font-size: 1.5rem;
-            color: var(--accent);
-            background: rgba(6, 214, 160, 0.1);
+            color: var(--dark);
             width: 50px;
             height: 50px;
-            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(6, 214, 160, 0.3);
         }
         
         .section-title {
@@ -138,14 +128,15 @@
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 500;
             color: var(--dark);
+            font-size: 1.1rem;
         }
         
         .required::after {
@@ -155,19 +146,18 @@
         
         input, select, textarea {
             width: 100%;
-            padding: 14px 16px;
+            padding: 16px;
             background: var(--light);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 8px;
             color: var(--dark);
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
         }
         
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
         input::placeholder, textarea::placeholder {
@@ -176,45 +166,52 @@
         
         .checkbox-group, .radio-group {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column;
+            gap: 15px;
             margin-top: 10px;
         }
         
         .checkbox-item, .radio-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .checkbox-item input, .radio-item input {
-            width: auto;
+            width: 20px;
+            height: 20px;
         }
         
-        /* Horários - Layout corrigido conforme imagem */
+        .checkbox-item label, .radio-item label {
+            margin-bottom: 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Horários - Layout conforme imagem */
         .hours-section {
             margin-top: 20px;
         }
         
         .hours-header {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 15px;
             margin-bottom: 10px;
             padding: 0 10px;
             font-weight: 600;
             color: var(--dark);
+            font-size: 1.1rem;
         }
         
         .hours-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 15px;
             margin-bottom: 15px;
             align-items: center;
             padding: 15px;
             background: var(--gray-lighter);
-            border-radius: 12px;
+            border-radius: 8px;
             border: 1px solid var(--border);
         }
         
@@ -223,6 +220,12 @@
             align-items: center;
             gap: 12px;
             font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .day-label input {
+            width: 20px;
+            height: 20px;
         }
         
         .time-input-group {
@@ -232,7 +235,7 @@
         }
         
         .time-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gray);
         }
         
@@ -243,17 +246,17 @@
             margin-bottom: 15px;
             padding: 15px;
             background: var(--gray-lighter);
-            border-radius: 12px;
+            border-radius: 8px;
             border: 1px solid var(--border);
             align-items: end;
         }
         
         .btn {
-            padding: 14px 24px;
-            border-radius: 12px;
+            padding: 16px 24px;
+            border-radius: 8px;
             border: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
@@ -269,36 +272,33 @@
         
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
         }
         
         .btn-secondary {
-            background: rgba(6, 214, 160, 0.1);
-            color: var(--accent);
-            border: 1px solid var(--accent);
+            background: var(--gray-lighter);
+            color: var(--dark);
+            border: 1px solid var(--border);
         }
         
         .btn-secondary:hover {
-            background: rgba(6, 214, 160, 0.2);
-            transform: translateY(-2px);
+            background: var(--gray-light);
         }
         
         .btn-danger {
-            background: rgba(239, 68, 68, 0.1);
+            background: var(--gray-lighter);
             color: var(--error);
             border: 1px solid var(--error);
-            padding: 10px 15px;
+            padding: 12px 16px;
         }
         
         .btn-danger:hover {
-            background: rgba(239, 68, 68, 0.2);
+            background: rgba(239, 68, 68, 0.1);
         }
         
         .btn-full {
             width: 100%;
-            padding: 16px;
-            font-size: 1.1rem;
+            padding: 18px;
+            font-size: 1.2rem;
             margin-top: 10px;
         }
         
@@ -311,18 +311,19 @@
             border: 1px solid var(--success);
             color: var(--success);
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 8px;
             text-align: center;
             margin-top: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-size: 1.1rem;
         }
         
         .info-text {
             color: var(--gray);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-top: 5px;
         }
         
@@ -347,25 +348,6 @@
                 font-size: 2rem;
             }
         }
-        
-        /* Animações */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .form-section {
-            animation: fadeIn 0.5s ease forwards;
-        }
-        
-        .form-section:nth-child(2) { animation-delay: 0.1s; }
-        .form-section:nth-child(3) { animation-delay: 0.2s; }
-        .form-section:nth-child(4) { animation-delay: 0.3s; }
-        .form-section:nth-child(5) { animation-delay: 0.4s; }
-        .form-section:nth-child(6) { animation-delay: 0.5s; }
-        .form-section:nth-child(7) { animation-delay: 0.6s; }
-        .form-section:nth-child(8) { animation-delay: 0.7s; }
-        .form-section:nth-child(9) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
@@ -471,12 +453,12 @@
                                 <div>Dia</div>
                                 <div>Horário de início *</div>
                                 <div>Horário de término</div>
+                                <div>Ativo</div>
                             </div>
                             
                             <!-- Segunda-feira -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="monday" name="days" value="monday">
                                     <label for="monday">Segunda-feira</label>
                                 </div>
                                 <div class="time-input-group">
@@ -485,12 +467,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="mondayEnd" name="mondayEnd" value="18:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="monday" name="days" value="monday" checked>
+                                </div>
                             </div>
                             
                             <!-- Terça-feira -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="tuesday" name="days" value="tuesday">
                                     <label for="tuesday">Terça-feira</label>
                                 </div>
                                 <div class="time-input-group">
@@ -499,12 +483,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="tuesdayEnd" name="tuesdayEnd" value="18:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="tuesday" name="days" value="tuesday" checked>
+                                </div>
                             </div>
                             
                             <!-- Quarta-feira -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="wednesday" name="days" value="wednesday">
                                     <label for="wednesday">Quarta-feira</label>
                                 </div>
                                 <div class="time-input-group">
@@ -513,12 +499,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="wednesdayEnd" name="wednesdayEnd" value="18:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="wednesday" name="days" value="wednesday" checked>
+                                </div>
                             </div>
                             
                             <!-- Quinta-feira -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="thursday" name="days" value="thursday">
                                     <label for="thursday">Quinta-feira</label>
                                 </div>
                                 <div class="time-input-group">
@@ -527,12 +515,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="thursdayEnd" name="thursdayEnd" value="18:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="thursday" name="days" value="thursday" checked>
+                                </div>
                             </div>
                             
                             <!-- Sexta-feira -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="friday" name="days" value="friday">
                                     <label for="friday">Sexta-feira</label>
                                 </div>
                                 <div class="time-input-group">
@@ -541,12 +531,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="fridayEnd" name="fridayEnd" value="18:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="friday" name="days" value="friday" checked>
+                                </div>
                             </div>
                             
                             <!-- Sábado -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="saturday" name="days" value="saturday">
                                     <label for="saturday">Sábado</label>
                                 </div>
                                 <div class="time-input-group">
@@ -555,12 +547,14 @@
                                 <div class="time-input-group">
                                     <input type="time" id="saturdayEnd" name="saturdayEnd" value="12:00">
                                 </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="saturday" name="days" value="saturday">
+                                </div>
                             </div>
                             
                             <!-- Domingo -->
                             <div class="hours-row">
                                 <div class="day-label">
-                                    <input type="checkbox" id="sunday" name="days" value="sunday">
                                     <label for="sunday">Domingo</label>
                                 </div>
                                 <div class="time-input-group">
@@ -568,6 +562,9 @@
                                 </div>
                                 <div class="time-input-group">
                                     <input type="time" id="sundayEnd" name="sundayEnd" value="12:00">
+                                </div>
+                                <div class="day-label">
+                                    <input type="checkbox" id="sunday" name="days" value="sunday">
                                 </div>
                             </div>
                         </div>
@@ -675,42 +672,6 @@
                                 <label for="patientReason">Motivo da consulta</label>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <!-- Procedimentos e Preços -->
-                <div class="form-section">
-                    <div class="section-header">
-                        <div class="section-icon">
-                            <i class="fas fa-procedures"></i>
-                        </div>
-                        <h2 class="section-title">Procedimentos e Preços</h2>
-                    </div>
-                    
-                    <div class="form-group">
-                        <p>Configurar preços específicos para cada procedimento (opcional)</p>
-                        
-                        <div id="proceduresContainer">
-                            <div class="procedure-item">
-                                <div>
-                                    <label for="procedureName1">Nome do procedimento</label>
-                                    <input type="text" id="procedureName1" name="procedureName[]" placeholder="Ex: Consulta de retorno...">
-                                </div>
-                                <div>
-                                    <label for="procedureDuration1">Duração (min)</label>
-                                    <input type="number" id="procedureDuration1" name="procedureDuration[]" placeholder="Ex: 45" min="15" max="180">
-                                </div>
-                                <div>
-                                    <button type="button" class="btn btn-danger remove-procedure">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button type="button" id="addProcedure" class="btn btn-secondary">
-                            <i class="fas fa-plus"></i> Adicionar procedimento
-                        </button>
                     </div>
                 </div>
                 
@@ -854,41 +815,6 @@
                 const showInsuranceInfo = this.value === 'insurance' || this.value === 'both';
                 document.getElementById('insuranceInfo').classList.toggle('hidden', !showInsuranceInfo);
             });
-        });
-        
-        // Adicionar procedimentos
-        let procedureCount = 1;
-        document.getElementById('addProcedure').addEventListener('click', function() {
-            procedureCount++;
-            const newProcedure = document.createElement('div');
-            newProcedure.className = 'procedure-item';
-            newProcedure.innerHTML = `
-                <div>
-                    <label for="procedureName${procedureCount}">Nome do procedimento</label>
-                    <input type="text" id="procedureName${procedureCount}" name="procedureName[]" placeholder="Ex: Consulta de retorno...">
-                </div>
-                <div>
-                    <label for="procedureDuration${procedureCount}">Duração (min)</label>
-                    <input type="number" id="procedureDuration${procedureCount}" name="procedureDuration[]" placeholder="Ex: 45" min="15" max="180">
-                </div>
-                <div>
-                    <button type="button" class="btn btn-danger remove-procedure">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                </div>
-            `;
-            
-            document.getElementById('proceduresContainer').appendChild(newProcedure);
-            
-            // Adicionar evento para remover procedimento
-            newProcedure.querySelector('.remove-procedure').addEventListener('click', function() {
-                newProcedure.remove();
-            });
-        });
-        
-        // Remover procedimento inicial
-        document.querySelector('.remove-procedure').addEventListener('click', function() {
-            this.closest('.procedure-item').remove();
         });
         
         // Envio do formulário
