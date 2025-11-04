@@ -1112,47 +1112,67 @@
             }
             
             // Prepara os dados para envio
-            const formData = new FormData(this);
+            const formData = new FormData();
+            
+            // Adiciona apenas os campos essenciais
+            formData.append('clinicName', document.getElementById('clinicName').value);
+            formData.append('specialty', document.getElementById('specialty').value);
+            formData.append('cep', document.getElementById('cep').value);
+            formData.append('street', document.getElementById('street').value);
+            formData.append('number', document.getElementById('number').value);
+            formData.append('complement', document.getElementById('complement').value);
+            formData.append('neighborhood', document.getElementById('neighborhood').value);
+            formData.append('city', document.getElementById('city').value);
+            formData.append('state', document.getElementById('state').value);
+            formData.append('hasLunch', document.querySelector('input[name="hasLunch"]:checked').value);
+            formData.append('serviceType', document.querySelector('input[name="serviceType"]:checked').value);
+            formData.append('appointmentDuration', document.getElementById('appointmentDuration').value);
+            formData.append('hasParking', document.querySelector('input[name="hasParking"]:checked').value);
+            formData.append('agentName', document.getElementById('agentName').value);
+            
+            // Horário de almoço (se aplicável)
+            if (document.querySelector('input[name="hasLunch"]:checked').value === 'Sim') {
+                formData.append('lunchStart', document.getElementById('lunchStart').value);
+                formData.append('lunchEnd', document.getElementById('lunchEnd').value);
+            }
+            
+            // Convênios (se aplicável)
+            if (document.querySelector('input[name="serviceType"]:checked').value === 'Convênio' || 
+                document.querySelector('input[name="serviceType"]:checked').value === 'Ambos') {
+                formData.append('insuranceList', document.getElementById('insuranceList').value);
+            }
+            
+            // Informações dos pacientes
+            const patientInfoCheckboxes = document.querySelectorAll('input[name="patientInfo"]:checked');
+            const patientInfoValues = Array.from(patientInfoCheckboxes).map(cb => cb.value);
+            formData.append('patientInfo', patientInfoValues.join(', '));
+            
+            // Formas de pagamento
+            const paymentCheckboxes = document.querySelectorAll('input[name="paymentMethods"]:checked');
+            const paymentValues = Array.from(paymentCheckboxes).map(cb => cb.value);
+            formData.append('paymentMethods', paymentValues.join(', '));
             
             // Compacta os horários em um único campo
             const horariosCompactados = [];
             
-            // Segunda-feira
-            if (document.getElementById('monday').checked) {
-                horariosCompactados.push(`Segunda: ${document.getElementById('mondayStart').value} às ${document.getElementById('mondayEnd').value}`);
-            }
+            const dias = [
+                { nome: 'Segunda', start: 'mondayStart', end: 'mondayEnd', active: 'monday' },
+                { nome: 'Terça', start: 'tuesdayStart', end: 'tuesdayEnd', active: 'tuesday' },
+                { nome: 'Quarta', start: 'wednesdayStart', end: 'wednesdayEnd', active: 'wednesday' },
+                { nome: 'Quinta', start: 'thursdayStart', end: 'thursdayEnd', active: 'thursday' },
+                { nome: 'Sexta', start: 'fridayStart', end: 'fridayEnd', active: 'friday' },
+                { nome: 'Sábado', start: 'saturdayStart', end: 'saturdayEnd', active: 'saturday' },
+                { nome: 'Domingo', start: 'sundayStart', end: 'sundayEnd', active: 'sunday' }
+            ];
             
-            // Terça-feira
-            if (document.getElementById('tuesday').checked) {
-                horariosCompactados.push(`Terça: ${document.getElementById('tuesdayStart').value} às ${document.getElementById('tuesdayEnd').value}`);
-            }
+            dias.forEach(dia => {
+                if (document.getElementById(dia.active).checked) {
+                    const start = document.getElementById(dia.start).value;
+                    const end = document.getElementById(dia.end).value;
+                    horariosCompactados.push(`${dia.nome}: ${start} às ${end}`);
+                }
+            });
             
-            // Quarta-feira
-            if (document.getElementById('wednesday').checked) {
-                horariosCompactados.push(`Quarta: ${document.getElementById('wednesdayStart').value} às ${document.getElementById('wednesdayEnd').value}`);
-            }
-            
-            // Quinta-feira
-            if (document.getElementById('thursday').checked) {
-                horariosCompactados.push(`Quinta: ${document.getElementById('thursdayStart').value} às ${document.getElementById('thursdayEnd').value}`);
-            }
-            
-            // Sexta-feira
-            if (document.getElementById('friday').checked) {
-                horariosCompactados.push(`Sexta: ${document.getElementById('fridayStart').value} às ${document.getElementById('fridayEnd').value}`);
-            }
-            
-            // Sábado
-            if (document.getElementById('saturday').checked) {
-                horariosCompactados.push(`Sábado: ${document.getElementById('saturdayStart').value} às ${document.getElementById('saturdayEnd').value}`);
-            }
-            
-            // Domingo
-            if (document.getElementById('sunday').checked) {
-                horariosCompactados.push(`Domingo: ${document.getElementById('sundayStart').value} às ${document.getElementById('sundayEnd').value}`);
-            }
-            
-            // Adiciona os horários compactados ao formData
             formData.append('horariosAtendimento', horariosCompactados.join(' | '));
             
             // Compacta procedimentos
@@ -1162,9 +1182,11 @@
             
             const procedimentosCompactados = [];
             for (let i = 0; i < procedureNames.length; i++) {
-                if (procedureNames[i].value && procedureDurations[i].value) {
-                    const preco = procedurePrices[i].value ? `R$ ${procedurePrices[i].value}` : 'Sem preço definido';
-                    procedimentosCompactados.push(`${procedureNames[i].value} (${procedureDurations[i].value}min - ${preco})`);
+                if (procedureNames[i].value.trim()) {
+                    const nome = procedureNames[i].value;
+                    const duracao = procedureDurations[i].value || 'N/D';
+                    const preco = procedurePrices[i].value ? `R$ ${procedurePrices[i].value}` : 'Sem preço';
+                    procedimentosCompactados.push(`${nome} (${duracao}min - ${preco})`);
                 }
             }
             
