@@ -614,7 +614,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="monday" name="days[]" value="Segunda-feira" checked>
+                                        <input type="checkbox" id="monday" name="mondayActive" value="true" checked>
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -633,7 +633,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="tuesday" name="days[]" value="Terça-feira" checked>
+                                        <input type="checkbox" id="tuesday" name="tuesdayActive" value="true" checked>
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -652,7 +652,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="wednesday" name="days[]" value="Quarta-feira" checked>
+                                        <input type="checkbox" id="wednesday" name="wednesdayActive" value="true" checked>
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -671,7 +671,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="thursday" name="days[]" value="Quinta-feira" checked>
+                                        <input type="checkbox" id="thursday" name="thursdayActive" value="true" checked>
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -690,7 +690,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="friday" name="days[]" value="Sexta-feira" checked>
+                                        <input type="checkbox" id="friday" name="fridayActive" value="true" checked>
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -709,7 +709,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="saturday" name="days[]" value="Sábado">
+                                        <input type="checkbox" id="saturday" name="saturdayActive" value="true">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -728,7 +728,7 @@
                                 </div>
                                 <div class="toggle-container">
                                     <label class="toggle-switch">
-                                        <input type="checkbox" id="sunday" name="days[]" value="Domingo">
+                                        <input type="checkbox" id="sunday" name="sundayActive" value="true">
                                         <span class="toggle-slider"></span>
                                     </label>
                                 </div>
@@ -818,7 +818,7 @@
                         <label class="required">Quais informações você precisa dos pacientes para agendar uma consulta?</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientName" name="patientInfo[]" value="Nome completo" checked class="fixed-checkbox">
+                                <input type="checkbox" id="patientName" name="patientInfo" value="Nome completo" checked class="fixed-checkbox">
                                 <label for="patientName" class="fixed-checkbox-label">
                                     Nome completo
                                     <div class="tooltip">
@@ -828,7 +828,7 @@
                                 </label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientPhone" name="patientInfo[]" value="Telefone" checked class="fixed-checkbox">
+                                <input type="checkbox" id="patientPhone" name="patientInfo" value="Telefone" checked class="fixed-checkbox">
                                 <label for="patientPhone" class="fixed-checkbox-label">
                                     Telefone
                                     <div class="tooltip">
@@ -838,15 +838,15 @@
                                 </label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientCPF" name="patientInfo[]" value="CPF">
+                                <input type="checkbox" id="patientCPF" name="patientInfo" value="CPF">
                                 <label for="patientCPF">CPF</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientBirth" name="patientInfo[]" value="Data de nascimento">
+                                <input type="checkbox" id="patientBirth" name="patientInfo" value="Data de nascimento">
                                 <label for="patientBirth">Data de nascimento</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="patientReason" name="patientInfo[]" value="Motivo da consulta">
+                                <input type="checkbox" id="patientReason" name="patientInfo" value="Motivo da consulta">
                                 <label for="patientReason">Motivo da consulta</label>
                             </div>
                         </div>
@@ -906,31 +906,31 @@
                         <label class="required">Selecione todas as formas de pagamento que sua clínica aceita</label>
                         <div class="checkbox-group">
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentPix" name="paymentMethods[]" value="PIX">
+                                <input type="checkbox" id="paymentPix" name="paymentMethods" value="PIX">
                                 <label for="paymentPix">PIX</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentCash" name="paymentMethods[]" value="Dinheiro">
+                                <input type="checkbox" id="paymentCash" name="paymentMethods" value="Dinheiro">
                                 <label for="paymentCash">Dinheiro</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentDebit" name="paymentMethods[]" value="Cartão de Débito">
+                                <input type="checkbox" id="paymentDebit" name="paymentMethods" value="Cartão de Débito">
                                 <label for="paymentDebit">Cartão de Débito</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentCredit" name="paymentMethods[]" value="Cartão de Crédito">
+                                <input type="checkbox" id="paymentCredit" name="paymentMethods" value="Cartão de Crédito">
                                 <label for="paymentCredit">Cartão de Crédito</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentBank" name="paymentMethods[]" value="Transferência Bancária">
+                                <input type="checkbox" id="paymentBank" name="paymentMethods" value="Transferência Bancária">
                                 <label for="paymentBank">Transferência Bancária</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentBoleto" name="paymentMethods[]" value="Boleto Bancário">
+                                <input type="checkbox" id="paymentBoleto" name="paymentMethods" value="Boleto Bancário">
                                 <label for="paymentBoleto">Boleto Bancário</label>
                             </div>
                             <div class="checkbox-item">
-                                <input type="checkbox" id="paymentConv" name="paymentMethods[]" value="Convênio">
+                                <input type="checkbox" id="paymentConv" name="paymentMethods" value="Convênio">
                                 <label for="paymentConv">Convênio</label>
                             </div>
                         </div>
@@ -1113,6 +1113,66 @@
             
             // Prepara os dados para envio
             const formData = new FormData(this);
+            
+            // Compacta os horários em um único campo
+            const horariosCompactados = [];
+            
+            // Segunda-feira
+            if (document.getElementById('monday').checked) {
+                horariosCompactados.push(`Segunda: ${document.getElementById('mondayStart').value} às ${document.getElementById('mondayEnd').value}`);
+            }
+            
+            // Terça-feira
+            if (document.getElementById('tuesday').checked) {
+                horariosCompactados.push(`Terça: ${document.getElementById('tuesdayStart').value} às ${document.getElementById('tuesdayEnd').value}`);
+            }
+            
+            // Quarta-feira
+            if (document.getElementById('wednesday').checked) {
+                horariosCompactados.push(`Quarta: ${document.getElementById('wednesdayStart').value} às ${document.getElementById('wednesdayEnd').value}`);
+            }
+            
+            // Quinta-feira
+            if (document.getElementById('thursday').checked) {
+                horariosCompactados.push(`Quinta: ${document.getElementById('thursdayStart').value} às ${document.getElementById('thursdayEnd').value}`);
+            }
+            
+            // Sexta-feira
+            if (document.getElementById('friday').checked) {
+                horariosCompactados.push(`Sexta: ${document.getElementById('fridayStart').value} às ${document.getElementById('fridayEnd').value}`);
+            }
+            
+            // Sábado
+            if (document.getElementById('saturday').checked) {
+                horariosCompactados.push(`Sábado: ${document.getElementById('saturdayStart').value} às ${document.getElementById('saturdayEnd').value}`);
+            }
+            
+            // Domingo
+            if (document.getElementById('sunday').checked) {
+                horariosCompactados.push(`Domingo: ${document.getElementById('sundayStart').value} às ${document.getElementById('sundayEnd').value}`);
+            }
+            
+            // Adiciona os horários compactados ao formData
+            formData.append('horariosAtendimento', horariosCompactados.join(' | '));
+            
+            // Compacta procedimentos
+            const procedureNames = document.querySelectorAll('input[name="procedureName[]"]');
+            const procedureDurations = document.querySelectorAll('input[name="procedureDuration[]"]');
+            const procedurePrices = document.querySelectorAll('input[name="procedurePrice[]"]');
+            
+            const procedimentosCompactados = [];
+            for (let i = 0; i < procedureNames.length; i++) {
+                if (procedureNames[i].value && procedureDurations[i].value) {
+                    const preco = procedurePrices[i].value ? `R$ ${procedurePrices[i].value}` : 'Sem preço definido';
+                    procedimentosCompactados.push(`${procedureNames[i].value} (${procedureDurations[i].value}min - ${preco})`);
+                }
+            }
+            
+            if (procedimentosCompactados.length > 0) {
+                formData.append('procedimentos', procedimentosCompactados.join(' | '));
+            }
+            
+            // Configurações do FormSubmit
             formData.append('_captcha', 'false');
             formData.append('_template', 'table');
             formData.append('_subject', '🎯 NOVO CADASTRO - Formulário de Agente Auton I.A');
